@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Inicio - Géneros{% endblock %}
+{% block title %}Géneros{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
@@ -9,36 +9,28 @@
 
     {% if generos %}
         <div class="row justify-content-center">
-            <div class="col-md-10"> <!-- Contenedor central amplio -->
+            <div class="col-md-10">
             
             {% for genero in generos %}
-                <!-- FILA DEL GÉNERO: Cero aspecto de tarjeta, solo una fila con una línea divisoria al final -->
                 <div class="row mb-5 pb-5 border-bottom align-items-center">
-                    
-                    <!-- 1. Portada a la izquierda (Alineada y sin contenedor de tarjeta) -->
                     <div class="col-md-5 mb-4 mb-md-0">
                         <img src="{% static genero.portada %}" class="img-fluid rounded-4 shadow" alt="Portada de {{ genero.nombre }}" style="width: 100%; height: 400px; object-fit: cover;">
                     </div>
-                    
-                    <!-- 2. Información y componentes a la derecha -->
                     <div class="col-md-7 ps-md-4">
-                        
-                        <!-- Nombre y Descripción -->
+
                         <h2 class="fw-bold mb-3" style="color: rgb(23, 23, 139); font-size: 2.5rem;">{{ genero.nombre }}</h2>
                         <p class="text-muted mb-4 fs-5">{{ genero.descripcion }}</p>
                         
-                        <!-- Botón que despliega el List Group -->
                         <button class="btn btn-outline-dark w-100 mb-3 fw-bold p-3" type="button" data-bs-toggle="collapse" data-bs-target="#vistaPrevia{{ genero.id }}" aria-expanded="false" aria-controls="vistaPrevia{{ genero.id }}">
-                            🔽 Ver miniaturas de las películas
+                            🔽 Vista Previa
                         </button>
 
-                        <!-- 3. LIST GROUP Desplegable (Totalmente distinto a una card) -->
                         <div class="collapse" id="vistaPrevia{{ genero.id }}">
                             <div class="list-group mb-4 shadow-sm">
                                 
                                 {% if genero.peliculas %}
                                     {% for pelicula in genero.peliculas %}
-                                        <!-- Elemento del List Group -->
+                                        <!-- List Group -->
                                         <div class="list-group-item d-flex align-items-center p-3 border-start-0 border-end-0">
                                             <img src="{% static pelicula.imagen %}" class="rounded me-4 shadow-sm" alt="{{ pelicula.nombre }}" style="width: 65px; height: 90px; object-fit: cover;">
                                             <div>
@@ -52,14 +44,13 @@
                             </div>
                         </div>
                         
-                        <!-- 4. BOTÓN FINAL de redirección -->
                         {% if genero.nombre == 'Animación' %}
                             <a href="{% url 'Home:vista_animacion' %}" class="btn btn-primary btn-lg w-100 text-white p-3 shadow" style="background-color: rgb(23, 23, 139); border: none;">
-                                Ir al catálogo de Animación &raquo;
+                                Ver Películas de Animación &raquo;
                             </a>
                         {% elif genero.nombre == 'Comedia Romántica' %}
                             <a href="{% url 'Home:vista_comedia' %}" class="btn btn-primary btn-lg w-100 text-white p-3 shadow" style="background-color: rgb(23, 23, 139); border: none;">
-                                Ir al catálogo de Comedia Romántica &raquo;
+                                Ver Películas de Comedia Romántica &raquo;
                             </a>
                         {% endif %}
 
