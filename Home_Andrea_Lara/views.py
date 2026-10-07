@@ -60,4 +60,12 @@ def vista_animacion(request):
         return render(request, 'Home/vista_animacion.html', animacion)
 
 def vista_comedia(request):
-    return render(request, 'Home/vista_comedia.html')
+    comedia= {
+                'peliculas': [
+                    {'nombre': 'A El No Le Gustas Tanto','edad' :'Mayores de 13 años', 'portada': 'images/NoLeGustas.jpg'},
+                    {'nombre': 'La Propuesta','edad' :'Mayores de 12 a 13 años', 'portada': 'images/LaPropuesta.jpg'},
+                    {'nombre': 'Cómo perder a un hombre en 10 días','edad' :'Mayores de 13 años', 'portada': 'images/PerderEn10Dias.jpg'}
+                ]
+            }
+    return render(request, 'Home/vista_comedia.html', comedia)
+    
