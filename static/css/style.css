@@ -1,0 +1,52 @@
+#nav-sandwich{
+    background-color: rgb(31, 31, 168);
+}
+
+#logo{
+    font-weight: bold;
+    color: aliceblue;
+}
+
+#texto-nav{
+    color: aliceblue;
+}
+
+.navbar-toggler {
+    border-color: white !important; 
+    box-shadow: none !important; 
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+#footer{
+    background-color: rgb(23, 23, 139);
+}
+.card{
+    border:none;
+    box-shadow: 0 20px 30px rgba(13, 10, 54, 0.8);
+    border-radius: 10px;
+}
+
+.card-title{
+    color: rgb(23, 23, 139);
+    font-weight: bold;
+}
+
+.btn-primary{
+    background-color: rgb(23, 23, 139);
+    border-color: rgb(23, 23, 139);
+    
+}
+
+.btn-primary:hover{
+    background-color: rgb(44, 44, 160);
+    border-color: rgb(44, 44, 160);
+    
+}
+
+.btn-secondary{
+    background-color: rgb(23, 23, 139);
+    border-color: rgb(23, 23, 139);
+}

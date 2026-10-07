@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+    <h1 class="mb-4 text-center text-dark fw-bold">Conoce Nuestros Géneros</h1>
+
+    {% if generos %}
+        <!-- inicio del Carrusel -->
+        <div id="carruselGeneros" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
+            
+            <!-- indicadores del carrosel -->
+            <div class="carousel-indicators">
+                {% for genero in generos %}
+                    <button type="button" data-bs-target="#carruselGeneros" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+
+            <!-- Contenido del carrusel -->
+            <div class="carousel-inner">
+                {% for genero in generos %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{% static genero.portada %}" class="d-block w-100" alt="{{ genero.nombre }}" style="height: 550px; object-fit: cover; filter: brightness(0.4);">
+                        
+                        <div class="carousel-caption d-flex flex-column justify-content-center h-100" style="top: 0; bottom: 0;">
+                            
+                            <h2 class="fw-bold display-3 text-white mb-3" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">{{ genero.nombre }}</h2>
+                            <p class="fs-4 text-light mb-5 mx-auto" style="max-width: 700px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">{{ genero.descripcion }}</p>
+                            
+                            <!-- Redireccionamiento de los botones según el genero-->
+                            <div>
+                                {% if genero.nombre == 'Animación' %}
+                                    <a href="{% url 'Home:vista_animacion' %}" class="btn btn-primary shadow px-5 py-3" style="background-color: rgb(23, 23, 139); border-width: 2px;">
+                                        Explorar Animación &raquo;
+                                    </a>
+                                {% elif genero.nombre == 'Comedia Romántica' %}
+                                    <a href="{% url 'Home:vista_comedia' %}" class="btn btn-primary shadow px-5 py-3" style="background-color: rgb(23, 23, 139); border-width: 2px;">
+                                        Explorar Comedia Romántica &raquo;
+                                    </a>
+                                {% endif %}
+                            </div>
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Controles del carrosel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carruselGeneros" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="width: 3rem; height: 3rem;"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carruselGeneros" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="width: 3rem; height: 3rem;"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+            
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center">No hay géneros disponibles en este momento.</div>
+    {% endif %}
+</div>
+{% endblock %}
