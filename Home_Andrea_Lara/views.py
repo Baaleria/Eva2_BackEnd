@@ -63,7 +63,7 @@ def vista_comedia(request):
                 'peliculas': [
                     {'nombre': 'A El No Le Gustas Tanto','edad' :'Mayores de 13 años', 'portada': 'images/NoLeGustas.jpg'},
                     {'nombre': 'La Propuesta','edad' :'Mayores de 12 a 13 años', 'portada': 'images/LaPropuesta.jpg'},
-                    {'nombre': 'Cómo perder a un hombre en 10 días','edad' :'Mayores de 13 años', 'portada': 'images/PerderEn10Dias.jpg'}
+                    {'nombre': 'Como Perder Un Hombre En 10 Días','edad' :'Mayores de 13 años', 'portada': 'images/PerderEn10Dias.jpg'}
                 ]
             }
     return render(request, 'Home/vista_comedia.html', comedia)
